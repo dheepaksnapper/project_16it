@@ -15,8 +15,10 @@ body {
 }
 
 .home-inner {
-  background-image: url('../assets/images/background.jpg');
+  /* background-image: url('../assets/images/background.jpg'); */
+  background-color: lightcoral;
 }
+
 
 .caption {
   width: 100%;
