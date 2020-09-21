@@ -1,5 +1,46 @@
-var tempChart,ammoChart;
+var tempChart, ammoChart, database, tempRef, ammoRef;
+var tempDataset = {
+    label: 'Temp °C',
+    data: [],
+    borderWidth: 2,
+    borderColor: '#1976d2',
+    backgroundColor: '#2196f3',
+    fill : false
+},
+tempChartOptions = {
+    scales: {
+        yAxes: [{
+            ticks: {
+                suggestedMin: 15,
+                suggestedMax: 70,
+                stepSize: 5
+            }
+        }]
+    }
+},
+ammoDataset = {
+    label: 'PPM',
+    data: [],
+    borderWidth: 2,
+    borderColor: '#388e3c',
+    backgroundColor: '#4caf50',
+    fill : false
+},
+ammoChartOptions = {
+    scales: {
+        yAxes: [{
+            ticks: {
+                suggestedMin: 10,
+                suggestedMax: 50,
+                stepSize: 5
+            }
+        }]
+    }
+}
 
+Date.prototype.timeNow = function () {
+    return ((this.getHours() < 10)?"0":"") + this.getHours() +":"+ ((this.getMinutes() < 10)?"0":"") + this.getMinutes();;
+}
 
 function initializeFirebase() {
     var firebaseConfig = {
@@ -14,58 +55,65 @@ function initializeFirebase() {
       };
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
+      // get db reference
+      database = firebase.database();
+
 }
 
 function initializeCharts() {
     var ctx = document.getElementById('tempChart').getContext('2d');
     tempChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
-    }
+        type: 'line',
+        data: {
+            lables: [],
+            datasets: [
+                tempDataset
+            ]
+        },
+        options: tempChartOptions
     });
     var ctx1 = document.getElementById('ammoChart').getContext('2d');
     ammoChart = new Chart(ctx1, {
-    type: 'line',
-    data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
-    }
+            type: 'line',
+            data: {
+                lables: [],
+                datasets: [
+                    ammoDataset
+                ]
+            },
+        options: ammoChartOptions
     });
+}
 
+function initializeFirebaseReadEvent() {
+    tempRef = firebase.database().ref('temperature');
+    ammoRef = firebase.database().ref('ammonia');
+    tempRef.on('value', function(snapshot) {
+        updateChartData(tempChart, snapshot);
+    });
+    ammoRef.on('value', function(snapshot) {
+        updateChartData(ammoChart, snapshot);
+    });
+}
+
+function updateChartData(chart, snapshot) {
+
+    // get db reference - 1
+    // subscribe to event - 1
+    // update chart - 1
+    var date = new Date();
+    chart.data.labels.push(date.timeNow())
+    chart.data.datasets.forEach((dataset) => {
+        dataset.data.push(snapshot.val());
+    });
+    chart.update();
 }
 
 $(document).ready(function () {
     console.log('document loaded');
     initializeFirebase();
     initializeCharts();
+    initializeFirebaseReadEvent();
 });
 
 
