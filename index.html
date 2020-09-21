@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <!-- Meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"">
+      <!-- main css -->
+      <link rel="stylesheet" href="./css/style.css">
+      <title>Poultry Environment Monitoring</title>
+  </head>
+  <body data-spy="scroll" data-target="#menu">
+      <!-- home -->
+      <div id="home">
+          <!-- navbar -->
+          <nav class="navbar navbar-dark navbar-expand-md fixed-top">
+              <div class="container-fluid">
+                  <a class="navbar-brand" href="#"><img src="./assets/images/logo.svg"><span class="ml-3">Poultry Monitoring</span></a>
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <!-- menu -->
+                  <div class="collapse navbar-collapse" id="menu">
+                    <ul class="navbar-nav ml-auto">
+                      <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#chart">Chart</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#actuations">Actuation</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <!-- end menu -->
+              </div> 
+          </nav> 
+          <!-- end navnab -->
+          <!-- image and caption -->
+          <div class="landing">
+            <div class="home-wrap">
+              <div class="home-inner"></div>
+            </div>
+          </div>
+          <div class="caption center-block text-center">
+            <h3>Poultry Monitoring Using IOT</h3>
+            <a class="btn btn-outline-light" href="#chart">Monitor</a>
+          </div>
+          <!-- end image and caption -->
+      </div>
+      <!-- end home -->
+
+
+
+
+
+      <!-- chart -->
+      <div id="chart">
+         <div class="jumbotron">
+           <h3 class="heading">Charts</h3>
+           <div class="row">
+             <div class="col-md-6 text-center" >
+               <h4>Temperature</h4>
+               <p>Themerature chart goes here</p>
+               <canvas id="tempChart" width="400" height="400"></canvas>
+             </div>
+             <div class="col-md-6 text-center" >
+              <h4>Ammonia</h4>
+              <p>Ammonia chart goes here</p>
+              <canvas id="ammoChart" width="400" height="400"></canvas>
+            </div>
+           </div>
+         </div>
+      </div>
+      <!-- end chart -->
+
+
+
+
+
+      <!-- fotter -->
+      <div class="container-fluid fotter">
+        <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-6 text-center">
+            <h4>Fotter</h4>
+            <p>Fotter deatils here</p>
+          </div>
+        </div>
+      </div>
+      <!-- end fotter -->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    <script src="./script/main.js"></script>
+  </body>
+</html>
