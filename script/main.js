@@ -1,11 +1,11 @@
 var tempChart, ammoChart, database, tempRef, ammoRef;
 var tempDataset = {
-    label: 'Temp °C',
+    label: 'Temp °C - 1',
     data: [],
     borderWidth: 2,
     borderColor: '#1976d2',
     backgroundColor: '#2196f3',
-    fill : true
+    fill : 'origin'
 },
 tempChartOptions = {
     scales: {
