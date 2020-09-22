@@ -1,4 +1,4 @@
-var tempChart, ammoChart, database, tempRef, ammoRef;
+var tempChart, ammoChart, database, tempRef, ammoRef, initialTime;
 var tempDataset = {
     label: 'Temp °C - 1',
     data: [],
@@ -13,9 +13,15 @@ tempChartOptions = {
             ticks: {
                 suggestedMin: 15,
                 suggestedMax: 70,
-                stepSize: 5
+                stepSize: 10
+            }
+        }],
+        xAxes: [{
+            ticks: {
+                maxTicksLimit: 5
             }
         }]
+        
     }
 },
 ammoDataset = {
@@ -30,16 +36,21 @@ ammoChartOptions = {
     scales: {
         yAxes: [{
             ticks: {
-                suggestedMin: 10,
-                suggestedMax: 50,
-                stepSize: 5
+                suggestedMin: 0,
+                suggestedMax: 20,
+                stepSize: 4
+            }
+        }],
+        xAxes: [{
+            ticks: {
+                maxTicksLimit: 5
             }
         }]
     }
 }
 
 Date.prototype.timeNow = function () {
-    return ((this.getHours() < 10)?"0":"") + this.getHours() +":"+ ((this.getMinutes() < 10)?"0":"") + this.getMinutes();;
+    return ((this.getHours() < 10)?"0":"") + this.getHours();
 }
 
 function initializeFirebase() {
@@ -102,7 +113,8 @@ function updateChartData(chart, snapshot) {
     // subscribe to event - 1
     // update chart - 1
     var date = new Date();
-    chart.data.labels.push(date.timeNow())
+    console.log(moment().format('LTS'));
+    chart.data.labels.push(moment().format('LTS'))
     chart.data.datasets.forEach((dataset) => {
         dataset.data.push(snapshot.val());
     });
