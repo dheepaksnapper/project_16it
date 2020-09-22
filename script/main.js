@@ -5,7 +5,7 @@ var tempDataset = {
     borderWidth: 2,
     borderColor: '#1976d2',
     backgroundColor: '#2196f3',
-    // fill : false
+    fill : true
 },
 tempChartOptions = {
     scales: {
