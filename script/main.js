@@ -5,7 +5,7 @@ var tempDataset = {
     borderWidth: 2,
     borderColor: '#1976d2',
     backgroundColor: '#2196f3',
-    fill : false
+    // fill : false
 },
 tempChartOptions = {
     scales: {
@@ -24,7 +24,7 @@ ammoDataset = {
     borderWidth: 2,
     borderColor: '#388e3c',
     backgroundColor: '#4caf50',
-    fill : false
+    // fill : false
 },
 ammoChartOptions = {
     scales: {

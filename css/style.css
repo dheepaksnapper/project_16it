@@ -1,7 +1,7 @@
 body {
   overflow-x: hidden; /*--right gutter fix--*/
   /* font-family: 'Courier New', Courier, monospace; */
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: black;
 }
 
@@ -15,8 +15,8 @@ body {
 }
 
 .home-inner {
-  /* background-image: url('../assets/images/background.jpg'); */
-  background-color: lightcoral;
+  background-image: url('../assets/images/background.jpg');
+  /* background-color: lightcoral; */
 }
 
 
